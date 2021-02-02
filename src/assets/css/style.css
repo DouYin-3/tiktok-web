@@ -1,0 +1,161 @@
+body {
+ background-color: black;
+ font-family: Arial, Helvetica, sans-serif;
+}
+/* 导航栏 */
+.NavBar {
+    height: 50px;
+    padding: 0 20px 0 20px;
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: space-between;
+    align-items: center;
+    color: #989898;
+}
+.pick {
+    color: #fff;
+    position: relative; 
+}
+.pick::after {
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* 底部导航栏 */
+.TabBar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 50px;
+    width: 100vw;
+    font-weight: 400;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    color: #989898;
+    font-size: 16px;
+}
+
+/* 短视频内容 */
+
+.video {
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    bottom: 50px;
+    background-color: #000;
+    overflow: hidden;
+    z-index: -1;
+}
+/* .content {
+    color: #fff;
+} */
+.video-swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.VideoPlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.VideoPlay  .videoItem {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* z-index bug开启不能点击视频 */
+    z-index: -1; 
+}
+.rightColumn {
+    position: absolute;
+    right: 5px;
+    bottom: 60px;
+    width: 60px;
+    height: 300px;
+    display: flex;
+    justify-content:space-between;
+    flex-direction: column;
+    align-items: center;
+}
+.rightColumn .iconGroup {
+    text-align: center;
+    color: #fff;
+}
+.rightColumn .iconGroup .avatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.rightColumn .iconGroup .avatar img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.rightColumn .iconGroup p{
+    font-size: 12px;
+    position: relative;
+    top: -10px;
+}
+.rightColumn .singer{
+    position: relative;
+    width: 46px;
+    height: 46px;
+    background-color: #222;
+    border-radius: 50%;
+    animation: song linear 5s 0s infinite;
+}
+@keyframes song{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.rightColumn .singer img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 底部 */
+.bottomRow {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 300px; 
+    color: #fff;
+}
+.bottomRow .description {
+    margin: 10px 0;
+}
+.bottomRow .row .userId {
+    font-weight: 600;
+    font-size: 15px;
+}
+.bottomRow .row .songName{
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    top: -2px;
+}
