@@ -76,10 +76,10 @@ export default class Video extends Component {
         >
           {this.state.videoList.map((v) => (
           <SwiperSlide  key= {v.Id.toString()}>
-             {/* {({ isActive }: any) => (
+            {({ isActive }) => (
               <VideoPlay item={v} isActive={isActive} />
-            )} */}
-            <VideoPlay video={v}/>
+            )}
+            {/* <VideoPlay video={v}/> */}
           </SwiperSlide>
         ))}
         </Swiper>
