@@ -1,38 +1,46 @@
 import React, { Component } from 'react'
 import Player from 'xgplayer';
-import v from '../../assets/video/v1.mp4'
+import v from '../../assets/video/v2.mp4'
 import avatar from '../../assets/img/avatar.jpg'
 //import './.xgplayer/skin/index.js';
-import { Tiktok, Like, Comment, Share } from '@icon-park/react'
-
-
-
-
 export default class VideoPlay extends Component {
   state = {}
   componentDidMount() {
+    const {playSize} = this;
     const video= this.props.item
     const isActive = this.props.isActive
     const player = new Player({
       id: video.Id,
       url: v,
-      width: 375,
-      height: 618,
+      width: playSize.clientWidth,
+      height: playSize.clientHeight,
       time: false,
       videoInit: true,
       loop: true,
+      muted: true,
+      closeVideoDblclick: true,
+      controls: false
     });
     this.setState({player, isActive})
   }
   componentDidUpdate() {
-    const isActive = this.props.isActive
-    this.Active(isActive)
+    const isActive = this.props.isActive;
+    this.Active(isActive);
   }
   control = () => {
+    const {singer,y1,y2,y3} = this;
     if(!this.state.player.hasStart || this.state.player.paused){
-      this.state.player.play()
+      this.state.player.play();
+      singer.style.animationPlayState = 'running';
+      y1.style.animationPlayState = 'running';
+      y2.style.animationPlayState = 'running';
+      y3.style.animationPlayState = 'running';
     }else {
-      this.state.player.pause()
+      this.state.player.pause();
+      singer.style.animationPlayState = 'paused';
+      y1.style.animationPlayState = 'paused';
+      y2.style.animationPlayState = 'paused';
+      y3.style.animationPlayState = 'paused';
     }
   }
   convertNumber = (number) => {
@@ -41,21 +49,41 @@ export default class VideoPlay extends Component {
     return number
   }
   Active = (isActive) => {
+    const {singer,y1,y2,y3} = this;
     if(isActive){
       setTimeout(() => {
         this.state.player.play();
+        singer.style.animationName = 'song';
+        y1.style.animationName = ['music-left','music-top'];
+        y2.style.animationName = ['music-left','music-top'];
+        y3.style.animationName = ['music-left','music-top'];
+        
       },500)
     }else if(this.state.player.play){
       const player = this.state.player
       player.currentTime = 0;
       this.state.player.pause()
+      singer.style.animationName = "hhh";
+      y1.style.animationName = 'hhh';
+      y2.style.animationName = 'hhh';
+      y3.style.animationName = 'hhh';
+    }
+  }
+  like = () =>{
+    const {iconLike} = this
+    if(iconLike.style.color === 'rgb(221, 0, 27)'){
+      iconLike.style.color = '#fff';
+    }else {
+      iconLike.style.color = '#DD001b';
     }
   }
   render() {
     const item = this.props.item
     return (
-      <div onClick = {this.control} className = 'VideoPlay'>
-        <div id = {item.Id}  className = 'videoItem'></div>
+      <div  className = 'VideoPlay'>
+        <div  onClick = {this.control} ref={c => this.playSize = c } className = 'videoItem'>
+          <div id = {item.Id} className = "player"></div>
+        </div>
         <div className='rightColumn'>
           <div className='iconGroup'>
             <div className = "avatar">
@@ -63,20 +91,26 @@ export default class VideoPlay extends Component {
             </div>
           </div>
           <div className='iconGroup'>
-            <Like theme='filled' size='2.2rem' fill='#fff' />
+            <i ref={c => this.iconLike = c } onClick = {this.like} className="iconfont icon-xihuan like" />
+            {/* <Like theme="filled" size="24" fill="#DD001b"/> */}
             <p className='iconText'>{this.convertNumber(item.likes)}</p>
           </div>
           <div className='iconGroup'>
-            <Comment theme="outline" size="2.2rem" fill="#fff"/>
+            <i className="iconfont icon-pinglun " />
             <p className='iconText'>{this.convertNumber(item.comments)}</p>
           </div>
           <div className='iconGroup'>
-            <Share theme='filled' size='2.2rem' fill='#fff' />
+            <i className="iconfont icon-zhuanfa" />
             <p className='iconText'>{this.convertNumber(888)}</p>
           </div>
-          <div className='iconGroup'>
-            <div className='singer'>
-              <img src={avatar} alt=""/>
+          <div  className='iconGroup '>
+            <div  className = 'singerInfo'>
+              <div ref={c => this.singer = c } className='singer'>
+                <img  src={avatar} alt=""/>
+              </div>
+              <i ref={c => this.y1 = c } style={{ fontSize: '1.2rem'}} className="iconfont icon-yinle1 y1" />
+              <i ref={c => this.y2 = c } style={{ fontSize: '1.2rem'}} className="iconfont icon-yinle y2" />
+              <i ref={c => this.y3 = c } style={{ fontSize: '1.2rem'}} className="iconfont icon-yinle1 y3"/>
             </div>
           </div>
         </div>
@@ -87,7 +121,7 @@ export default class VideoPlay extends Component {
           </div>
           <div className='description'>{item.description}</div>
           <div className='row'>
-            <Tiktok theme='filled' fill='#fff' />
+            <i className="iconfont icon-douyin" />
             <span className='songName'>歌</span>
           </div>
         </div>

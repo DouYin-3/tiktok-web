@@ -4,9 +4,10 @@ export default class NavBar extends Component {
     render() {
         return (
             <div className = "NavBar">
-                <div className = "live">直播</div>
+                <i  className="live iconfont icon-zhibo" />
+                
                 <div className = "pick">关注</div>
-                <div className = "search">搜索</div>
+                <i className="search iconfont icon-sousuo" />
             </div>
         )
     }

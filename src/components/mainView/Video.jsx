@@ -54,32 +54,29 @@ export default class Video extends Component {
     ]
     
   }
-  // componentDidMount() {
-  //     const wrapper = document.querySelector('.video')
-  //     //选中DOM中定义的 .wrapper 进行初始化
-  //     const scroll = new BScroll(wrapper, {
-  //         scrollX: false,  //关闭横向滚动
-  //         click: true,  // better-scroll 默认会阻止浏览器的原生 click 事件
-  //         scrollY: true, //开启竖向滚动
-  //     })
-  //     this.setState({
-  //       Bscroll: scroll,
-  //     })
-  // }
+  getMore = () =>{
+    const swiper = this.state.swiper;
+    if(swiper.isEnd){
+      console.log('loadMore')
+    }
+  }
   render() {
     return (
-      <div className = "video">
+      <div className = "video" >
         {/* <div className = "content"> */}
         <Swiper
           direction = 'vertical'
           className='video-swiper'
+          ref={c => this.swiper = c }
+          onSwiper={(swiper) => this.setState({swiper})}
+          onTouchEnd = {() => {if(this.state.videoList)this.getMore()}}
         >
           {this.state.videoList.map((v) => (
           <SwiperSlide  key= {v.Id.toString()}>
             {({ isActive }) => (
               <VideoPlay item={v} isActive={isActive} />
             )}
-            {/* <VideoPlay video={v}/> */}
+          
           </SwiperSlide>
         ))}
         </Swiper>

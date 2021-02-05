@@ -1,0 +1,72 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "212279",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "1008935",
+      "name": "音乐",
+      "font_class": "yinle1",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "7814895",
+      "name": "喜欢",
+      "font_class": "xihuan",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "8402992",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e52d",
+      "unicode_decimal": 58669
+    },
+    {
+      "icon_id": "9676821",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "10069271",
+      "name": "关注",
+      "font_class": "guanzhu",
+      "unicode": "e7d2",
+      "unicode_decimal": 59346
+    },
+    {
+      "icon_id": "14439225",
+      "name": "直播",
+      "font_class": "zhibo",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "17266730",
+      "name": "转发",
+      "font_class": "zhuanfa",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "19667532",
+      "name": "抖音",
+      "font_class": "douyin",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    }
+  ]
+}

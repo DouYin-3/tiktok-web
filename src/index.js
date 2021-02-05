@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './mock/TestMock'
-
 // import http from "./api/http";
 // http.get('api/getVideoList').then(res => {
 //   console.log(res);
@@ -13,6 +12,7 @@ import './mock/TestMock'
 // React.__proto__.$http = http;
 
 ReactDOM.render(
+  
   <React.StrictMode>
     <App/>
   </React.StrictMode>,

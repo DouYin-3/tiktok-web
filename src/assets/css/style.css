@@ -4,6 +4,8 @@ body {
 }
 /* 导航栏 */
 .NavBar {
+    position: relative;
+    top: 0;
     height: 50px;
     padding: 0 20px 0 20px;
     display: flex;
@@ -12,10 +14,17 @@ body {
     justify-content: space-between;
     align-items: center;
     color: #989898;
+    z-index: 999;
+}
+.live, .search{
+    font-size: 1.5rem;
+    color: #fff;
+    display: block;
 }
 .pick {
     color: #fff;
-    position: relative; 
+    position: relative;
+    top: -2px;
 }
 .pick::after {
     content: "";
@@ -41,28 +50,44 @@ body {
     color: #989898;
     font-size: 16px;
 }
-
+.TabBar .n{
+    flex: 1;
+    display: block;
+    color:  #989898;
+    text-align: center;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+}
+.TabBar a,a:hover,a:active,a:visited,a:link,a:focus{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
+    background: none;
+    text-decoration: none;
+ }
 /* 短视频内容 */
 
 .video {
     width: 100vw;
-    position: fixed;
+    position: absolute;
     top: 0px;
     bottom: 50px;
     background-color: #000;
     overflow: hidden;
-    z-index: -1;
+    z-index: 99;
 }
 /* .content {
     color: #fff;
 } */
 .video-swiper {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     position: relative;
 }
 .VideoPlay {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     position: relative;
 }
@@ -72,6 +97,11 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    /* z-index bug开启不能点击视频 */
+}
+.player {
+    width: 100%;
+    height: 100%;
     /* z-index bug开启不能点击视频 */
     z-index: -1; 
 }
@@ -89,6 +119,9 @@ body {
 .rightColumn .iconGroup {
     text-align: center;
     color: #fff;
+}
+.rightColumn .iconGroup i{
+    font-size: 2.2rem;
 }
 .rightColumn .iconGroup .avatar {
     position: relative;
@@ -112,20 +145,68 @@ body {
     position: relative;
     top: -10px;
 }
-.rightColumn .singer{
+.rightColumn .singerInfo {
     position: relative;
     width: 46px;
     height: 46px;
+}
+.rightColumn .singer{
+    position: relative;
+    width: 100%;
+    height: 100%;
     background-color: #222;
     border-radius: 50%;
     animation: song linear 5s 0s infinite;
+    z-index: 999;
 }
+/* 音乐头像动画效果 */
 @keyframes song{
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+.rightColumn .singerInfo i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.rightColumn .singerInfo .y1{
+    position: absolute;
+    animation:  music-left linear 4s 0s infinite, music-top cubic-bezier(.6,.31,.54,.82)  4s 0s infinite;
+}
+.rightColumn .singerInfo .y2{
+    position: absolute;
+    animation:  music-left linear 4s 2s infinite, music-top cubic-bezier(.6,.31,.54,.82)  4s 2s infinite;
+}
+.rightColumn .singerInfo .y3{
+    position: absolute;
+    animation:  music-left linear 4s 5s infinite, music-top cubic-bezier(.6,.31,.54,.82)  4s 5s infinite;
+}
+@keyframes music-left{
+    0% {
+        left: 50%;
+        opacity: 1;
+    }
+    50% {
+        left: -20px;
+        opacity: 0.8;
+    }
+    100% {
+        left: -0px;
+        opacity: 0;
+    }
+}
+@keyframes music-top{
+    0% {
+        top: 50%;
+        
+    }
+    100% {
+        top: -30px;
     }
 }
 .rightColumn .singer img{
@@ -145,6 +226,7 @@ body {
     bottom: 5px;
     width: 300px; 
     color: #fff;
+    font-size: 0.8rem;
 }
 .bottomRow .description {
     margin: 10px 0;
@@ -159,3 +241,4 @@ body {
     margin-left: 5px;
     top: -2px;
 }
+
