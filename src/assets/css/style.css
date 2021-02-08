@@ -6,10 +6,10 @@ body {
 .NavBar {
     position: relative;
     top: 0;
-    height: 50px;
-    padding: 0 20px 0 20px;
+    height: 3.125rem;
+    padding: 0 1.25rem 0 1.25rem;
     display: flex;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +24,7 @@ body {
 .pick {
     color: #fff;
     position: relative;
-    top: -2px;
+    top: -0.125rem;
 }
 .pick::after {
     content: "";
@@ -32,7 +32,7 @@ body {
     top: 120%;
     left: 10%;
     width: 80%;
-    height: 2px;
+    height: 0.125rem;
     background-color: #fff;
 }
 
@@ -41,14 +41,15 @@ body {
     position: fixed;
     bottom: 0px;
     left: 0px;
-    height: 50px;
+    height: 3.125rem;
     width: 100vw;
     font-weight: 400;
     display: flex;
     justify-content:space-around;
     align-items: center;
     color: #989898;
-    font-size: 16px;
+    font-size: 1rem;
+    background-color: #010101;
 }
 .TabBar .n{
     flex: 1;
@@ -56,9 +57,6 @@ body {
     color:  #989898;
     text-align: center;
     text-decoration: none;
-    -webkit-user-select: none;
-    -moz-user-focus: none;
-    -moz-user-select: none;
 }
 .TabBar a,a:hover,a:active,a:visited,a:link,a:focus{
     -webkit-tap-highlight-color:rgba(0,0,0,0);
@@ -73,9 +71,9 @@ body {
     width: 100vw;
     position: absolute;
     top: 0px;
-    bottom: 50px;
+    bottom: 3.125rem;
     background-color: #000;
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 99;
 }
 /* .content {
@@ -84,33 +82,35 @@ body {
 .video-swiper {
     width: 100vw;
     height: 100%;
-    position: relative;
+    /* position: relative; */
+    position: absolute;
 }
 .VideoPlay {
     width: 100vw;
     height: 100%;
-    position: relative;
+    overflow: hidden;
+    position: absolute;
 }
-.VideoPlay  .videoItem {
+.VideoPlay .videoItem{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.player {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
-    /* z-index bug开启不能点击视频 */
-}
-.player {
-    width: 100%;
-    height: 100%;
     /* z-index bug开启不能点击视频 */
     z-index: -1; 
 }
+
 .rightColumn {
     position: absolute;
-    right: 5px;
-    bottom: 60px;
-    width: 60px;
-    height: 300px;
+    right: 0.3125rem;
+    bottom: 3.75rem;
+    width: 3.75rem;
+    height: 18.75rem;
     display: flex;
     justify-content:space-between;
     flex-direction: column;
@@ -125,15 +125,15 @@ body {
 }
 .rightColumn .iconGroup .avatar {
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
     background-color: #fff;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 .rightColumn .iconGroup .avatar img{
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -141,14 +141,14 @@ body {
     transform: translate(-50%, -50%);
 }
 .rightColumn .iconGroup p{
-    font-size: 12px;
+    font-size: 0.75rem;
     position: relative;
     top: -10px;
 }
 .rightColumn .singerInfo {
     position: relative;
-    width: 46px;
-    height: 46px;
+    width: 2.875rem;
+    height: 2.875rem;
 }
 .rightColumn .singer{
     position: relative;
@@ -203,15 +203,14 @@ body {
 @keyframes music-top{
     0% {
         top: 50%;
-        
     }
     100% {
-        top: -30px;
+        top: -40px;
     }
 }
 .rightColumn .singer img{
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -222,23 +221,25 @@ body {
 /* 底部 */
 .bottomRow {
     position: absolute;
-    left: 5px;
-    bottom: 5px;
-    width: 300px; 
+    left: 0.3125rem;
+    bottom: 0.3125rem;
+    width: 18.75rem; 
     color: #fff;
     font-size: 0.8rem;
+
 }
 .bottomRow .description {
-    margin: 10px 0;
+    margin: 0.625rem 0;
 }
 .bottomRow .row .userId {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 0.9375rem;
 }
 .bottomRow .row .songName{
     position: relative;
     display: inline-block;
-    margin-left: 5px;
-    top: -2px;
+    margin-left: 0.3125rem;
+    top: -0.125rem;
 }
+
 

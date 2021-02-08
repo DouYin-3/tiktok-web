@@ -3,7 +3,21 @@ import React, { Component } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css'
 import VideoPlay from '../videoPlay/VideoPlay'
+import NavBar from './NavBar';
+import http from "../../api/http";
 export default class Video extends Component {
+  constructor(props, ...args) {
+    super(props, ...args)
+    props.cacheLifecycles.didCache(this.componentDidCache)
+    props.cacheLifecycles.didRecover(this.componentDidRecover)
+  }
+  //跳转暂停
+  componentDidCache = () => {
+    this.setState({ isCached: true })
+  }
+  componentDidRecover = () => {
+    this.setState({ isCached: false })
+  }
   state = {
     videoList: [
       {
@@ -51,17 +65,25 @@ export default class Video extends Component {
         likes: 586892,
         comments: 23456,
       },
-    ]
-    
+    ],
+    isCached:  false,
   }
-  getMore = () =>{
+  async componentDidMount () {
+    const res = await http.get('api/getVideoList')
+    console.log(res)
+  }
+  //加载更多
+  getMore = async  () =>{
     const swiper = this.state.swiper;
-    if(swiper.isEnd){
-      console.log('loadMore')
+    if (swiper.isEnd) {
+      const res = await http.get('api/getVideoList')
+      console.log(res)
     }
   }
   render() {
     return (
+      <div>
+        <NavBar></NavBar>
       <div className = "video" >
         {/* <div className = "content"> */}
         <Swiper
@@ -74,14 +96,15 @@ export default class Video extends Component {
           {this.state.videoList.map((v) => (
           <SwiperSlide  key= {v.Id.toString()}>
             {({ isActive }) => (
-              <VideoPlay item={v} isActive={isActive} />
+                <VideoPlay item={v} isActive={isActive} isCached={this.state.isCached}/>
             )}
-          
           </SwiperSlide>
         ))}
         </Swiper>
         {/* </div> */}
       </div>
+      </div>
+      
     )
   }
 }

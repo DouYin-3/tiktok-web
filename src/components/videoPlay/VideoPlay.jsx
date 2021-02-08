@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import Player from 'xgplayer';
 import v from '../../assets/video/v2.mp4'
 import avatar from '../../assets/img/avatar.jpg'
+
 //import './.xgplayer/skin/index.js';
 export default class VideoPlay extends Component {
+  
   state = {}
   componentDidMount() {
     const {playSize} = this;
     const video= this.props.item
-    const isActive = this.props.isActive
     const player = new Player({
       id: video.Id,
       url: v,
@@ -21,12 +22,13 @@ export default class VideoPlay extends Component {
       closeVideoDblclick: true,
       controls: false
     });
-    this.setState({player, isActive})
+    this.setState({player})
   }
   componentDidUpdate() {
     const isActive = this.props.isActive;
     this.Active(isActive);
   }
+  //点击控制
   control = () => {
     const {singer,y1,y2,y3} = this;
     if(!this.state.player.hasStart || this.state.player.paused){
@@ -43,32 +45,38 @@ export default class VideoPlay extends Component {
       y3.style.animationPlayState = 'paused';
     }
   }
+  //数字转型
   convertNumber = (number) => {
     if (number >= 1000000) return `${(number / 1000000).toFixed(1)}m`
     if (number >= 10000) return `${(number / 10000).toFixed(1)}w`
     return number
   }
+  //是否处于active
   Active = (isActive) => {
-    const {singer,y1,y2,y3} = this;
-    if(isActive){
-      setTimeout(() => {
-        this.state.player.play();
-        singer.style.animationName = 'song';
-        y1.style.animationName = ['music-left','music-top'];
-        y2.style.animationName = ['music-left','music-top'];
-        y3.style.animationName = ['music-left','music-top'];
-        
-      },500)
-    }else if(this.state.player.play){
-      const player = this.state.player
-      player.currentTime = 0;
+    const { singer, y1, y2, y3 } = this;
+    if (this.props.isCached) {
       this.state.player.pause()
-      singer.style.animationName = "hhh";
-      y1.style.animationName = 'hhh';
-      y2.style.animationName = 'hhh';
-      y3.style.animationName = 'hhh';
+    } else {
+      if(isActive){
+        setTimeout(() => {
+          this.state.player.play();
+          singer.style.animationName = 'song';
+          y1.style.animationName = ['music-left','music-top'];
+          y2.style.animationName = ['music-left','music-top'];
+          y3.style.animationName = ['music-left','music-top'];
+        },300)
+      }else if(this.state.player.play){
+        const player = this.state.player
+        player.currentTime = 0;
+        this.state.player.pause()
+        singer.style.animationName = "hhh";
+        y1.style.animationName = 'hhh';
+        y2.style.animationName = 'hhh';
+        y3.style.animationName = 'hhh';
+      }
     }
   }
+  //点赞
   like = () =>{
     const {iconLike} = this
     if(iconLike.style.color === 'rgb(221, 0, 27)'){

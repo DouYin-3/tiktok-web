@@ -1,0 +1,83 @@
+.user{
+    width: 100vw;
+    height: calc(100vh - 50px);
+    background-color: #151723;
+    color: #fff;
+}
+.uHeader{
+    width: 100vw;
+    height: 150px;
+}
+.uHeader img{
+    width: 100%;
+    height: 100%;
+}
+.uContent {
+    position: relative;
+    padding: 0 10px;
+}
+.uContent .userInfo {
+    display: flex;
+    color: #fff;
+    height: 8.125rem;
+    justify-content: space-between;
+}
+.uContent .userInfo .uAvatar{
+    width: 70px;
+    height: 100%;
+}
+.uContent .userInfo .uAvatar .img{
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.9375rem;
+    background-color: #151723;
+}
+.uContent .userInfo .uAvatar img{
+    width: 4.75rem;
+    height: 4.75rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.uContent .userInfo .uAvatar p{
+    position: absolute;
+    top: 3.4rem;
+    font-size: 1.2rem;
+}
+
+.uContent .userInfo .editor{
+    margin-top: 0.9375rem;
+    width: 40%;
+    text-align: center;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    background-color: #393943;
+    border-radius: 0.125rem;
+}
+.uContent .userInfo .friends{
+    margin-top: 0.9375rem;
+    width: 20%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    background-color: #393943;
+    border-radius: 0.125rem;
+}
+.uContent .userInfo::after{
+    position:absolute;
+    content: "";
+    width: 95%;
+    margin: 0 auto;
+    height: 1px;
+    top: 8rem;
+    background-color: #fff;
+    transform: scaleY(0.2);
+}
+.introduction {
+    font-size: 0.875rem;
+    margin-top: 0.625rem;
+}

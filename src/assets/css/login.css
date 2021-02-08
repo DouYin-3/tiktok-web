@@ -1,0 +1,41 @@
+/* 登录页面 */
+.login {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    color: #16171b
+}
+.loginTop {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    font-size: 14px;
+}
+.loginCont {
+    margin: 0 20px;
+    
+}
+.input , .submit{
+    width: 95%;
+    height: 2.5rem;
+    margin-bottom: 0.3125rem; 
+    font-size: 0.9375rem;
+    border: none;   
+    outline: none;
+    background-color: #f9f9f9;
+    border-radius: 0.125rem;
+    color: #adadad;
+}
+.tip {
+    color: #adadad;
+    font-size: 0.85rem;
+    margin-top: 0.3125rem;
+}
+.submit {
+    width: 100%;
+    color: #fff;
+    background-color: #D8d8da;
+    text-align: center;
+    line-height: 2.5rem;
+    margin-top: 1.25rem;
+}
