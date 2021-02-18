@@ -17,8 +17,8 @@ export default class VideoPlay extends Component {
       height: playSize.clientHeight,
       time: false,
       videoInit: true,
-      loop: true,
       muted: true,
+      loop: true,
       closeVideoDblclick: true,
       controls: false
     });

@@ -1,0 +1,140 @@
+.DyLive {
+  height: 100vh;
+  width: 100vw;
+  background-color: darksalmon;
+}
+.LivePlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.liveItem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.liveHeader {
+  position: absolute;
+  height: 3.125rem;
+  top: 0px;
+  left: 0.9375rem;
+  right: 0.9375rem;
+  color: #fff;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.liveComment {
+  position: absolute;
+  bottom: 0.9375rem;
+  left: 0.625rem;
+  width: 18.75rem;
+  height: 220px;
+  background-color: transparent;
+}
+.liveComment input::-webkit-input-placeholder {
+  color: #eee;
+}
+.liveComment input::-moz-input-placeholder {
+  color: #eee;
+}
+.liveComment nput::-ms-input-placeholder {
+  color: #eee;
+}
+.liveComment .display {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+}
+.liveComment .display .ComContent{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 95%;
+  padding: 0 10px;
+}
+.liveComment .ComContent li{
+  color: #FFF;
+  list-style:none;
+  background-color: transparent;
+  height: auto;
+  width:100%;
+  line-height: 20px;
+  border-radius: 10px;
+  margin: 2px 0;
+}
+.liveComment .ComContent li .comCon {
+  display: inline-block;
+  background-color: rgba(222,222,222, 0.05);
+  height: auto;
+  width:auto;
+  white-space: nowrap;
+  line-height: 20px;
+  padding: 0 10px;
+  border-radius: 10px;
+  margin: 2px 0;
+}
+.liveComment .ComContent li .userName{
+  color: #8ae9ed;
+}
+.liveComment .ComContent li .content{
+  overflow-wrap:break-word;
+}
+
+.liveComment .rest-nums {
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+  padding: 3px;
+  line-height: 16px;
+  font-size: 13px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: rgb(235, 70, 70);
+}
+.liveComment .ComInput {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 210px;
+  height: 30px;
+}
+ 
+.liveComment .ComInput input{
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  width: 170px;
+  height: 30px;
+  border: none;
+  background-color:rgba(255,255,255,0.1);
+  text-indent: 1em;
+  color: #BFAFcd;
+  border-radius: 10px;
+  touch-action: none;
+}
+
+.liveComment .ComInput .submit{
+  position: absolute;
+  right: 0px;
+  bottom: 1px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  background-color: #e11054;
+  border-radius: 10px;
+  font-size: 13px;
+  touch-action: none;
+}

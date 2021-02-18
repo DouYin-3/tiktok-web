@@ -18,7 +18,8 @@
     "react-scripts": "4.0.1",
     "swiper": "^6.4.10",
     "web-vitals": "^0.2.4",
-    "xgplayer": "^2.17.12"
+    "xgplayer": "^2.17.12",
+    "xgplayer-hls": "^2.4.4"
   },
   "scripts": {
     "start": "react-app-rewired start",
