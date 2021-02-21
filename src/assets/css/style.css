@@ -67,6 +67,21 @@ body {
  }
 /* 短视频内容 */
 
+.allVideo .muted {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    background-color: rgba(222,222,222, 0.3);
+    border-radius: 10px;
+    z-index: 999;
+    color: rgb(247, 230, 230);
+}
+
 .video {
     width: 100vw;
     position: absolute;
@@ -92,6 +107,7 @@ body {
     position: absolute;
     touch-action: none;
 }
+
 .VideoPlay .videoItem{
     position: absolute;
     width: 100%;
@@ -99,7 +115,7 @@ body {
 }
 
 .player {
-    position: absolute;
+    position: relative;
     top: 0;
     bottom: 0;
     /* z-index bug开启不能点击视频 */
@@ -151,6 +167,11 @@ body {
     width: 2.875rem;
     height: 2.875rem;
 }
+/* .rightColumn .iconGroup .like:checked{
+    transform: translateX(10px);
+    animation: like linear 0.5s 0s forwards;
+} */
+
 .rightColumn .singer{
     position: relative;
     width: 100%;
@@ -222,12 +243,11 @@ body {
 /* 底部 */
 .bottomRow {
     position: absolute;
-    left: 0.3125rem;
-    bottom: 0.3125rem;
+    left: 0.9375rem;
+    bottom: 0.625rem;
     width: 18.75rem; 
     color: #fff;
     font-size: 0.8rem;
-
 }
 .bottomRow .description {
     margin: 0.625rem 0;
@@ -243,4 +263,9 @@ body {
     top: -0.125rem;
 }
 
+
+/* 双击动画 */
+.addPink {
+    font-size: 16px;
+}
 

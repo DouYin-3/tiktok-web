@@ -67,11 +67,21 @@ export default class Video extends Component {
         comments: 23456,
       },
     ],
-    isCached:  false,
+    isCached: false,
+    muted: true
   }
   async componentDidMount() {
     this.setState({ isCached: this.props.isCached })
     await http.get('api/getVideoList')
+    this.mutePage()
+  }
+  // Mute a singular HTML5 element
+  muteMe = (elem) => {
+    elem.muted = this.state.muted;
+  }
+  //页面静音
+  mutePage = () => {
+    document.querySelectorAll("video").forEach( video => this.muteMe(video) );
   }
   //加载更多
   getMore = async  () =>{
@@ -81,27 +91,32 @@ export default class Video extends Component {
       console.log(res)
     }
   }
+  noMuted = async () => {
+    await this.setState({ muted: false })
+    this.mutePage()
+  }
   render() {
     return (
-      <div>
+      <div className = "allVideo">
+        {this.state.muted && <div className="muted" onClick={this.noMuted}>取消静音</div>}
         <NavBar></NavBar>
-      <div className = "video" >
-        <Swiper
-          direction = 'vertical'
-          className='video-swiper'
-          ref={c => this.swiper = c }
-          onSwiper={(swiper) => this.setState({swiper})}
-          onTouchEnd = {() => {if(this.state.videoList)this.getMore()}}
-        >
-          {this.state.videoList.map((v) => (
-            <SwiperSlide  key= {v.Id.toString()}>
-              {({ isActive }) => (
-                  <VideoPlay item={v} isActive={isActive} isCached={this.state.isCached}/>
-              )}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+        <div className = "video" >
+          <Swiper
+            direction = 'vertical'
+            className='video-swiper'
+            ref={c => this.swiper = c }
+            onSwiper={(swiper) => this.setState({swiper})}
+            onTouchEnd = {() => {if(this.state.videoList)this.getMore()}}
+          >
+            {this.state.videoList.map((v) => (
+              <SwiperSlide  key= {v.Id.toString()}>
+                {({ isActive }) => (
+                    <VideoPlay item={v} isActive={isActive} isCached={this.state.isCached}/>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
       
     )

@@ -106,7 +106,7 @@ export default class Comment extends Component {
     const top = - Number(this.state.wrapperDom.y); // 列表滚动高度
     this.state.wrapperDom.refresh()
     
-    if (diff - top < 30) {
+    if (diff - top < 50) {
       this.setState( { isWilling : false})
       if (diff > 0 && !this.state.isWilling) {
         this.state.wrapperDom.scrollTo(0, -diff - 15, 400);

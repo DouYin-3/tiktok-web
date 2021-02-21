@@ -5,8 +5,11 @@ import avatar from '../../assets/img/avatar.jpg'
 
 //import './.xgplayer/skin/index.js';
 export default class VideoPlay extends Component {
-  
   state = {}
+  // clickedTime = {
+  //   first: '',
+  //   second: ''
+  // }
   componentDidMount() {
     const {playSize} = this;
     const video= this.props.item
@@ -17,33 +20,55 @@ export default class VideoPlay extends Component {
       height: playSize.clientHeight,
       time: false,
       videoInit: true,
-      muted: true,
       loop: true,
       closeVideoDblclick: true,
       controls: false
     });
-    this.setState({player})
+    this.setState({ player, video })
   }
   componentDidUpdate() {
     const isActive = this.props.isActive;
     this.Active(isActive);
   }
+  
   //点击控制
-  control = () => {
-    const {singer,y1,y2,y3} = this;
-    if(!this.state.player.hasStart || this.state.player.paused){
-      this.state.player.play();
-      singer.style.animationPlayState = 'running';
-      y1.style.animationPlayState = 'running';
-      y2.style.animationPlayState = 'running';
-      y3.style.animationPlayState = 'running';
-    }else {
-      this.state.player.pause();
-      singer.style.animationPlayState = 'paused';
-      y1.style.animationPlayState = 'paused';
-      y2.style.animationPlayState = 'paused';
-      y3.style.animationPlayState = 'paused';
-    }
+  control = (event) => {
+    // let e = event || window.event;
+    // let position = {}
+    // let time = new Date();
+    // if (!this.clickedTime.first) {
+    //   this.clickedTime.first = time
+    // }
+    // this.clickedTime.second = time
+    // if (Math.abs(this.clickedTime.first - this.clickedTime.second) < 400) {
+    //   //双击
+    //   position.x = e.clientX;
+    //   position.y = e.clientY;
+    //   let pink = document.createElement("div")
+    //   pink.className = ["addPink", "iconfont", "icon-xihuan "];
+    //   const { playSize } = this;
+    //   playSize.appendChild(pink);
+    //   pink.clientX = e.clientX;
+    //   pink.clientY = e.clientY;
+    //   console.log(pink)
+    // } else {
+      //单击
+      const {singer,y1,y2,y3} = this;
+      if(!this.state.player.hasStart || this.state.player.paused){
+        this.state.player.play();
+        singer.style.animationPlayState = 'running';
+        y1.style.animationPlayState = 'running';
+        y2.style.animationPlayState = 'running';
+        y3.style.animationPlayState = 'running';
+      }else {
+        this.state.player.pause();
+        singer.style.animationPlayState = 'paused';
+        y1.style.animationPlayState = 'paused';
+        y2.style.animationPlayState = 'paused';
+        y3.style.animationPlayState = 'paused';
+      }
+    // }
+    // this.clickedTime.first = this.clickedTime.second
   }
   //数字转型
   convertNumber = (number) => {
@@ -85,11 +110,15 @@ export default class VideoPlay extends Component {
       iconLike.style.color = '#DD001b';
     }
   }
+  //取消静音
+  noMuted = () => {
+    return <div className = "">取消静音</div>
+  }
   render() {
     const item = this.props.item
     return (
-      <div  className = 'VideoPlay'>
-        <div  onClick = {this.control} ref={c => this.playSize = c } className = 'videoItem'>
+      <div className='VideoPlay'>
+        <div   onClick = {this.control} ref={c => this.playSize = c } className = 'videoItem'>
           <div id = {item.Id} className = "player"></div>
         </div>
         <div className='rightColumn'>
@@ -100,7 +129,6 @@ export default class VideoPlay extends Component {
           </div>
           <div className='iconGroup'>
             <i ref={c => this.iconLike = c } onClick = {this.like} className="iconfont icon-xihuan like" />
-            {/* <Like theme="filled" size="24" fill="#DD001b"/> */}
             <p className='iconText'>{this.convertNumber(item.likes)}</p>
           </div>
           <div className='iconGroup'>

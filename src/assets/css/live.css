@@ -1,12 +1,13 @@
 .DyLive {
   height: 100vh;
   width: 100vw;
-  background-color: darksalmon;
+  background-color: rgb(41, 39, 39);
 }
 .LivePlay {
   position: absolute;
   width: 100%;
   height: 100%;
+  touch-action: none;
 }
 .liveItem {
   position: relative;
@@ -73,17 +74,24 @@
   line-height: 20px;
   border-radius: 10px;
   margin: 2px 0;
+  
 }
 .liveComment .ComContent li .comCon {
   display: inline-block;
   background-color: rgba(222,222,222, 0.05);
   height: auto;
   width:auto;
-  white-space: nowrap;
   line-height: 20px;
   padding: 0 10px;
   border-radius: 10px;
   margin: 2px 0;
+  overflow-wrap: break-word;
+  word-break:normal; 
+  width:auto; 
+  white-space:pre-wrap;
+  word-wrap : break-word ;
+  overflow: hidden ;
+
 }
 .liveComment .ComContent li .userName{
   color: #8ae9ed;
@@ -137,4 +145,10 @@
   border-radius: 10px;
   font-size: 13px;
   touch-action: none;
+}
+.noActive {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(40, 41, 41);
 }

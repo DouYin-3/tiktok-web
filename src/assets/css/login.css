@@ -11,7 +11,7 @@
     padding: 15px 10px;
     font-size: 14px;
 }
-.loginCont {
+.loginCont, .registerCont{
     margin: 0 20px;
     
 }
@@ -29,7 +29,9 @@
 .tip {
     color: #adadad;
     font-size: 0.85rem;
-    margin-top: 0.3125rem;
+    margin-top: 0.9375rem;
+    width: 80px;
+    line-height: 20px;
 }
 .submit {
     width: 100%;

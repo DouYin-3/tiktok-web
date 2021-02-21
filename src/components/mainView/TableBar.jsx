@@ -5,7 +5,7 @@ class TableBar extends Component {
 
     change = () => {
         let { history } = this.props
-        if (!localStorage.userInfo) {
+        if (localStorage.userInfo) {
 		    history.push({pathname: '/profile'})
         } else {
             history.push({pathname: '/login'})
