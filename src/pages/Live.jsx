@@ -2,49 +2,45 @@ import React, { Component } from 'react'
 import '../assets/css/live.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css'
-import LivePlay from '../components/livePlay/LivePlay'
+import LivePlay from '../components/LivePlay'
+import http from "../api/http";
 export default class Live extends Component {
   state = {
-    videoList: [
-      {
-        Id: 1,
-        author: "字节君",
-        url: "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8",
-        description: "字节跳动8周年，不忘初心,always Day1",
-        taglist: ["一个普通公司的8年"],
-        likes: 586892,
-        comments: 23456,
-        
-      },
-      {
-        Id: 2,
-        author: "字节君",
-        url: "http://ivi.bupt.edu.cn/hls/hunanhd.m3u8",
-        description: "字节跳动8周年，不忘初心,always Day1",
-        taglist: ["一个普通公司的8年"],
-        likes: 586892,
-        comments: 23456,
+    page: 1,
+    liveList: [],
+  }
+  async componentDidMount() {
+    const res =  await http.get(`/lives`, {
+      params:{
+        id:this.state.page
       }
-    ],
+    })
+    let list = this.state.liveList;
+    list.push(...res.data.list)
+    await this.setState({
+      liveList: list
+    })
+    this.state.swiper.updateSlides();
   }
   render() {
     return (
-      <div className = "DyLive">
+      <div className="DyLive">
+        {this.state.liveList.length > 0 &&
         <Swiper
           direction = 'vertical'
           className='video-swiper'
           ref={c => this.swiper = c }
           onSwiper={(swiper) => this.setState({swiper})}
-          // onTouchEnd = {() => {if(this.state.videoList)this.getMore()}}
         >
-          {this.state.videoList.map((v) => (
-            <SwiperSlide key={v.Id.toString()}>
+          {this.state.liveList.map((v) => (
+            <SwiperSlide key={v.id.toString()}>
               {({ isActive }) => (
                 <LivePlay item={v} isActive={isActive} />
               )}
             </SwiperSlide>
           ))}
-        </Swiper>
+          </Swiper>
+        }
       </div>
     )
   }

@@ -3,7 +3,8 @@
     width: 100vw;
     height: 100vh;
     background-color: #fff;
-    color: #16171b
+    color: #16171b;
+    touch-action: none;
 }
 .loginTop {
     display: flex;
@@ -25,6 +26,7 @@
     background-color: #f9f9f9;
     border-radius: 0.125rem;
     color: #adadad;
+    touch-action: none;
 }
 .tip {
     color: #adadad;
@@ -40,4 +42,13 @@
     text-align: center;
     line-height: 2.5rem;
     margin-top: 1.25rem;
+}
+.getCode {
+    width: 150px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #adadad;
+    color: #f9f9f9;
+    border-radius: 10px;
+    margin-top: 10px;
 }
