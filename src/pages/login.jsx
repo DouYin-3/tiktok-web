@@ -138,7 +138,7 @@ export default class login extends Component {
   //发送验证码
   getCode = async () => {
     let obj = this.state.register;
-    if (!this.state.getCode) {
+    if (!this.state.getCode && obj.mailName !== '') {
       this.setState({
         getCode : ! this.state.getCode
       })

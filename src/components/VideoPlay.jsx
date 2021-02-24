@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Player from 'xgplayer';
 import avatar from '../assets/img/avatar.jpg'
 import http from "../api/http";
+//import './.xgplayer/skin/index.js';
 export default class VideoPlay extends Component {
   state = {}
   // clickedTime = {
@@ -22,7 +23,6 @@ export default class VideoPlay extends Component {
       closeVideoDblclick: true,
       controls: false,
       autoplay: true,
-      playsinline: true,
     });
     this.setState({ player, video })
   }
@@ -30,45 +30,36 @@ export default class VideoPlay extends Component {
     const isActive = this.props.isActive;
     this.Active(isActive);
   }
-  
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.isActive !== nextProps.isActive) {
+      return true;
+    }
+    if (!this.props.isActive && !nextProps.isActive) {
+      return true;
+    }
+    return false;
+  }
   //点击控制
   control = (event) => {
-    // let e = event || window.event;
-    // let position = {}
-    // let time = new Date();
-    // if (!this.clickedTime.first) {
-    //   this.clickedTime.first = time
-    // }
-    // this.clickedTime.second = time
-    // if (Math.abs(this.clickedTime.first - this.clickedTime.second) < 400) {
-    //   //双击
-    //   position.x = e.clientX;
-    //   position.y = e.clientY;
-    //   let pink = document.createElement("div")
-    //   pink.className = ["addPink", "iconfont", "icon-xihuan "];
-    //   const { playSize } = this;
-    //   playSize.appendChild(pink);
-    //   pink.clientX = e.clientX;
-    //   pink.clientY = e.clientY;
-    //   console.log(pink)
-    // } else {
-      //单击
-      const {singer,y1,y2,y3} = this;
-      if(!this.state.player.hasStart || this.state.player.paused){
-        this.state.player.play();
-        singer.style.animationPlayState = 'running';
-        y1.style.animationPlayState = 'running';
-        y2.style.animationPlayState = 'running';
-        y3.style.animationPlayState = 'running';
-      }else {
-        this.state.player.pause();
-        singer.style.animationPlayState = 'paused';
-        y1.style.animationPlayState = 'paused';
-        y2.style.animationPlayState = 'paused';
-        y3.style.animationPlayState = 'paused';
-      }
-    // }
-    // this.clickedTime.first = this.clickedTime.second
+    //单击
+    event = event||window.event
+    event.stopPropagation();
+    const {singer,y1,y2,y3} = this;
+    if(!this.state.player.hasStart || this.state.player.paused){
+      this.state.player.play();
+      singer.style.animationPlayState = 'running';
+      y1.style.animationPlayState = 'running';
+      y2.style.animationPlayState = 'running';
+      y3.style.animationPlayState = 'running';
+    }else {
+      this.state.player.pause();
+      console.log(this.state.player.paused)
+      singer.style.animationPlayState = 'paused';
+      y1.style.animationPlayState = 'paused';
+      y2.style.animationPlayState = 'paused';
+      y3.style.animationPlayState = 'paused';
+    }
+    
   }
   //数字转型
   convertNumber = (number) => {
@@ -102,6 +93,7 @@ export default class VideoPlay extends Component {
         },300)
       }
     }
+    
   }
   //点赞
   like = async () => {

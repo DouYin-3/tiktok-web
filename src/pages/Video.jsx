@@ -45,8 +45,10 @@ export default class Video extends Component {
     elem.muted = this.state.muted;
   }
   //页面静音
-  mutePage = () => {
-    document.querySelectorAll("video").forEach( video => this.muteMe(video) );
+  mutePage = (event) => {
+    event = event||window.event
+    document.querySelectorAll("video").forEach(video => this.muteMe(video));
+    event.stopPropagation();
   }
   noMuted = async () => {
     await this.setState({ muted: false })
@@ -54,9 +56,8 @@ export default class Video extends Component {
   }
   //加载更多
   getMore = async () => {
-    //this.state.swiper.updatePagination()
     const swiper = this.state.swiper;
-    let gap = this.state.translate - swiper.translate 
+    let gap = this.state.translate - swiper.translate
     this.setState({ translate: swiper.translate })
     if (swiper.isEnd && gap > 0 ) {
       const res =  await http.get(`/v1/videos`, {
@@ -95,7 +96,7 @@ export default class Video extends Component {
             ref={c => this.swiper = c }
             onSwiper={(swiper) => this.setState({ swiper })}
             onClick={() => { return false }}
-            onTouchEnd = {() => {if(this.state.videoList)this.getMore()}}
+            onTouchEnd = {() => {if(this.state.videoList) this.getMore()}}
           >
             {this.state.videoList.map((v) => (
               <SwiperSlide  key= {v.id.toString()}>

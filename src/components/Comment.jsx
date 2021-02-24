@@ -132,9 +132,15 @@ export default class Comment extends Component {
       // }
       //this.inputValue.value = ""
       //this.state.socket.emit('exchange',obj)
+      let userName;
+      if (JSON.parse(localStorage.getItem('userInfo'))) {
+        userName = JSON.parse(localStorage.getItem('userInfo')).userName
+      } else {
+        userName = "字节用户"
+      }
       let obj1 = {
         id: Date.now(),
-        userName: JSON.parse(localStorage.getItem('userInfo')).userName,
+        userName:  userName,
         content: value,
       }
       await this.addTimeOut(obj1);
